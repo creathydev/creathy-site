@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
@@ -17,31 +17,56 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      // Determine active section
-      const sections = navLinks.map((link) => link.href.slice(1));
-      for (const section of sections.reverse()) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 150) {
-            setActiveSection(section);
-            break;
+      // Determine active section only on home page
+      if (isHomePage) {
+        const sections = navLinks.filter(l => !l.isPage).map((link) => link.href.slice(1));
+        for (const section of sections.reverse()) {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            if (rect.top <= 150) {
+              setActiveSection(section);
+              break;
+            }
           }
         }
       }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHomePage]);
+
+  const handleSectionClick = (href: string) => {
+    const sectionId = href.slice(1);
+    setIsMobileMenuOpen(false);
+    
+    if (isHomePage) {
+      // On home page, just scroll to section
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // On other pages, navigate to home with hash
+      navigate(`/${href}`);
+    }
+  };
 
   const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-    setIsMobileMenuOpen(false);
+    handleSectionClick("#contact");
+  };
+
+  const handleLogoClick = () => {
+    if (isHomePage) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      navigate("/");
+    }
   };
 
   return (
@@ -58,8 +83,8 @@ export const Navbar = () => {
       <nav className="container-narrow">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <motion.a
-            href="#"
+          <motion.button
+            onClick={handleLogoClick}
             className="flex items-center gap-2"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -67,7 +92,7 @@ export const Navbar = () => {
             <span className="text-2xl font-bold text-foreground">
               Crea<span className="text-primary">thy</span>
             </span>
-          </motion.a>
+          </motion.button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -76,30 +101,40 @@ export const Navbar = () => {
                 <motion.div key={link.name} whileHover={{ y: -2 }}>
                   <Link
                     to={link.href}
-                    className="relative text-sm font-medium transition-colors duration-200 text-muted-foreground hover:text-foreground"
+                    className={`relative text-sm font-medium transition-colors duration-200 ${
+                      location.pathname === link.href
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
                   >
                     {link.name}
+                    {location.pathname === link.href && (
+                      <motion.div
+                        layoutId="activeSection"
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                      />
+                    )}
                   </Link>
                 </motion.div>
               ) : (
-                <motion.a
+                <motion.button
                   key={link.name}
-                  href={link.href}
+                  onClick={() => handleSectionClick(link.href)}
                   className={`relative text-sm font-medium transition-colors duration-200 ${
-                    activeSection === link.href.slice(1)
+                    isHomePage && activeSection === link.href.slice(1)
                       ? "text-primary"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                   whileHover={{ y: -2 }}
                 >
                   {link.name}
-                  {activeSection === link.href.slice(1) && (
+                  {isHomePage && activeSection === link.href.slice(1) && (
                     <motion.div
                       layoutId="activeSection"
                       className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
                     />
                   )}
-                </motion.a>
+                </motion.button>
               )
             )}
           </div>
@@ -179,27 +214,30 @@ export const Navbar = () => {
                       <Link
                         to={link.href}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="block px-4 py-3 rounded-lg transition-colors text-foreground hover:text-primary hover:bg-primary/5"
+                        className={`block px-4 py-3 rounded-lg transition-colors ${
+                          location.pathname === link.href
+                            ? "text-primary bg-primary/10"
+                            : "text-foreground hover:text-primary hover:bg-primary/5"
+                        }`}
                       >
                         {link.name}
                       </Link>
                     </motion.div>
                   ) : (
-                    <motion.a
+                    <motion.button
                       key={link.name}
-                      href={link.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
+                      onClick={() => handleSectionClick(link.href)}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 + i * 0.05 }}
-                      className={`block px-4 py-3 rounded-lg transition-colors ${
-                        activeSection === link.href.slice(1)
+                      className={`block w-full text-left px-4 py-3 rounded-lg transition-colors ${
+                        isHomePage && activeSection === link.href.slice(1)
                           ? "text-primary bg-primary/10"
                           : "text-foreground hover:text-primary hover:bg-primary/5"
                       }`}
                     >
                       {link.name}
-                    </motion.a>
+                    </motion.button>
                   )
                 )}
                 <motion.div
