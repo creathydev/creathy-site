@@ -19,9 +19,9 @@ import { Button } from "@/components/ui/button";
 const portfolioItems = [
   {
     id: 1,
-    companyName: "Coming Soon",
-    description: "Our first showcase project will be featured here",
-    siteUrl: "#",
+    companyName: "Razzaq Automotives",
+    description: "A fully functional website with backend admin controls and inventory management system, built for a leading supplier of heavy vehicle body parts in Autonogar, Vijayawada.",
+    siteUrl: "https://www.razzaqautomotives.com",
     images: ["/placeholder.svg"],
     category: "Web Development",
   },
