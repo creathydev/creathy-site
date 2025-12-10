@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import razzaqHeroImage from "@/assets/razzaq-automotives-hero.png";
 
 // Sample portfolio data - can be updated later
 const portfolioItems = [
@@ -22,7 +23,7 @@ const portfolioItems = [
     companyName: "Razzaq Automotives",
     description: "A fully functional website with backend admin controls and inventory management system, built for a leading supplier of heavy vehicle body parts in Autonogar, Vijayawada.",
     siteUrl: "https://www.razzaqautomotives.com",
-    images: ["/placeholder.svg"],
+    images: [razzaqHeroImage],
     category: "Web Development",
   },
   {
