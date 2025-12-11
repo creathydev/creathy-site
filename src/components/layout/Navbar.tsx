@@ -100,7 +100,7 @@ export const Navbar = () => {
             <img 
               src={mounted && resolvedTheme === "dark" ? logoDark : logoLight} 
               alt="Creathy Logo" 
-              className="h-8 md:h-10 w-auto"
+              className="h-10 md:h-14 w-auto"
             />
           </motion.button>
 
