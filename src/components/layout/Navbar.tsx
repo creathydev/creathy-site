@@ -8,7 +8,7 @@ import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import logoDark from "@/assets/logo-dark.png";
 import logoLight from "@/assets/logo-light.png";
 // Adjust this multiplier to scale the logo size (1 = default, 1.5 = 50% larger, etc.)
-const LOGO_SCALE = 2.5;
+const LOGO_SCALE = 3;
 
 const navLinks = [
   { name: "About", href: "#about" },
