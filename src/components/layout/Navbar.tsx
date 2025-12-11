@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import logoDark from "@/assets/logo-dark.png";
 import logoLight from "@/assets/logo-light.png";
+// Adjust this multiplier to scale the logo size (1 = default, 1.5 = 50% larger, etc.)
+const LOGO_SCALE = 1.5;
+
 const navLinks = [
   { name: "About", href: "#about" },
   { name: "Services", href: "#services" },
@@ -100,7 +103,14 @@ export const Navbar = () => {
             <img 
               src={mounted && resolvedTheme === "dark" ? logoDark : logoLight} 
               alt="Creathy Logo" 
-              className="h-10 md:h-14 w-auto"
+              style={{ height: `${2.5 * LOGO_SCALE}rem`, width: 'auto' }}
+              className="md:hidden"
+            />
+            <img 
+              src={mounted && resolvedTheme === "dark" ? logoDark : logoLight} 
+              alt="Creathy Logo" 
+              style={{ height: `${3.5 * LOGO_SCALE}rem`, width: 'auto' }}
+              className="hidden md:block"
             />
           </motion.button>
 
