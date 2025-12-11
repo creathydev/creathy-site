@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin, Heart, MessageCircle } from "lucide-react";
 import logoDark from "@/assets/logo-dark.png";
 
-const LOGO_SCALE = 3.5;
+const LOGO_SCALE = 2.5;
 
 const services = [
   "Website Development",
