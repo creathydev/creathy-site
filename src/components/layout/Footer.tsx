@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin, Heart, MessageCircle } from "lucide-react";
-import logoDark from "@/assets/logo-dark.png";
+import logoDarkFooter from "@/assets/logo-dark-footer.png";
 
 const services = [
   "Website Development",
@@ -40,7 +40,7 @@ export const Footer = () => {
           >
             <a href="#" className="inline-block mb-6">
               <img 
-                src={logoDark} 
+                src={logoDarkFooter} 
                 alt="Creathy Logo" 
                 className="h-8 w-auto"
               />
