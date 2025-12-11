@@ -18,21 +18,13 @@ import razzaqHeroImage from "@/assets/razzaq-automotives-hero.png";
 
 // Sample portfolio data - can be updated later
 const portfolioItems = [
-  // {
-  //   id: 1,
-  //   companyName: "Razzaq Automotives",
-  //   description: "A fully functional website with backend admin controls and inventory management system, built for a leading supplier of heavy vehicle body parts in Autonogar, Vijayawada.",
-  //   siteUrl: "https://www.razzaqautomotives.com",
-  //   images: [razzaqHeroImage],
-  //   category: "Web Development",
-  // },
   {
     id: 1,
-    companyName: "Coming Soon",
-    description: "Website development success story coming soon",
-    siteUrl: "#",
-    images: ["/placeholder.svg"],
-    category: "Website Development",
+    companyName: "Razzaq Automotives",
+    description: "A fully functional website with backend admin controls and inventory management system, built for a leading supplier of heavy vehicle body parts in Autonogar, Vijayawada.",
+    siteUrl: "https://www.razzaqautomotives.com",
+    images: [razzaqHeroImage],
+    category: "Web Development",
   },
   {
     id: 2,

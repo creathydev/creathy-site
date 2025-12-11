@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin, Heart, MessageCircle } from "lucide-react";
-import logoDark from "@/assets/logo-dark.png";
+import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone, MapPin, Heart, MessageCircle } from "lucide-react";
 
 const services = [
   "Website Development",
@@ -39,11 +38,9 @@ export const Footer = () => {
             className="lg:col-span-1"
           >
             <a href="#" className="inline-block mb-6">
-              <img
-                src={logoDark}
-                alt="Creathy"
-                className="h-10 w-auto object-contain"
-              />
+              <span className="text-2xl font-bold">
+                Crea<span className="text-primary">thy</span>
+              </span>
             </a>
             <p className="text-neutral-400 mb-6 leading-relaxed">
               Your trusted partner for digital transformation. We help businesses
