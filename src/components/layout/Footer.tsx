@@ -44,7 +44,7 @@ export const Footer = () => {
               <img 
                 src={logoDark} 
                 alt="Creathy Logo" 
-                style={{ height: `${1.5 * LOGO_SCALE}rem`, width: 'auto' }}
+                style={{ height: `${2.5 * LOGO_SCALE}rem`, width: 'auto' }}
                 className="h-8 w-auto"
               />
             </a>
