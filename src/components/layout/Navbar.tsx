@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
-
+import logoDark from "@/assets/logo-dark.png";
+import logoLight from "@/assets/logo-light.png";
 const navLinks = [
   { name: "About", href: "#about" },
   { name: "Services", href: "#services" },
@@ -17,9 +19,15 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [mounted, setMounted] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { resolvedTheme } = useTheme();
   const isHomePage = location.pathname === "/";
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -89,9 +97,11 @@ export const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="text-2xl font-bold text-foreground">
-              Crea<span className="text-primary">thy</span>
-            </span>
+            <img 
+              src={mounted && resolvedTheme === "dark" ? logoDark : logoLight} 
+              alt="Creathy Logo" 
+              className="h-8 md:h-10 w-auto"
+            />
           </motion.button>
 
           {/* Desktop Navigation */}
