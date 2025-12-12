@@ -160,7 +160,7 @@ export const HeroSection = () => {
           delay: 0.6
         }} className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 text-balance">
             We help businesses build their online presence through modern digital
-            solutions — websites, digital marketing, influencer marketing, video editing & more.
+            solutions websites, digital marketing, influencer marketing, video editing & more.
           </motion.p>
 
           {/* CTA Buttons */}
