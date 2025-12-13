@@ -215,7 +215,7 @@ export const ContactSection = () => {
                         <Input 
                           type="text" 
                           name="name"
-                          placeholder="John Doe" 
+                          placeholder=" Name " 
                           required 
                           className="h-12 transition-all focus:scale-[1.02]" 
                         />
@@ -231,7 +231,7 @@ export const ContactSection = () => {
                         <Input 
                           type="tel" 
                           name="phone"
-                          placeholder="+1 234 567 890" 
+                          placeholder=" Phone " 
                           className="h-12 transition-all focus:scale-[1.02]" 
                         />
                       </motion.div>
@@ -248,7 +248,7 @@ export const ContactSection = () => {
                       <Input 
                         type="email" 
                         name="email"
-                        placeholder="john@company.com" 
+                        placeholder=" Email" 
                         required 
                         className="h-12 transition-all focus:scale-[1.02]" 
                       />
