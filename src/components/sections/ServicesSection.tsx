@@ -1,68 +1,9 @@
 import { motion } from "framer-motion";
-import {
-  Globe,
-  Megaphone,
-  Search,
-  Video,
-  Image,
-  MessageCircle,
-  Palette,
-  ArrowRight,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal, fadeInUp, staggerContainer, scaleIn } from "@/hooks/useScrollReveal";
-
-const services = [
-  {
-    icon: Globe,
-    title: "Website Development & Design",
-    description:
-      "Custom, responsive websites that captivate visitors and drive conversions with modern design.",
-    color: "primary",
-  },
-  {
-    icon: Search,
-    title: "SEO & Ranking Optimization",
-    description:
-      "Boost your visibility on search engines and attract organic traffic that converts.",
-    color: "primary",
-  },
-  {
-    icon: Megaphone,
-    title: "Digital Marketing & Ads",
-    description:
-      "Strategic campaigns across Google, Meta, and more to maximize your reach and ROI.",
-    color: "accent",
-  },
-  {
-    icon: Video,
-    title: "Video Editing & Creative Ads",
-    description:
-      "Engaging video content that tells your story and captures audience attention.",
-    color: "accent",
-  },
-  {
-    icon: Image,
-    title: "Photo Editing & Graphic Design",
-    description:
-      "Stunning visuals and graphics that elevate your brand's visual identity.",
-    color: "primary",
-  },
-  {
-    icon: MessageCircle,
-    title: "WhatsApp Business API & Customer Relationship Management",
-    description:
-      "Automate customer communications and run targeted campaigns via WhatsApp. Build a strong relationship with your customers using CRM Dashboards.",
-    color: "accent",
-  },
-  {
-    icon: Palette,
-    title: "Branding & Social Media",
-    description:
-      "Complete brand identity design and social media management for consistent growth.",
-    color: "primary",
-  },
-];
+import { services } from "@/data/services";
 
 export const ServicesSection = () => {
   const { ref, isInView } = useScrollReveal();
@@ -123,51 +64,51 @@ export const ServicesSection = () => {
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              variants={scaleIn}
-              whileHover={{
-                y: -8,
-                scale: 1.02,
-                transition: { duration: 0.2 }
-              }}
-              className="group relative bg-card rounded-2xl p-6 border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-300 cursor-pointer"
-              onClick={scrollToContact}
-            >
-              {/* Hover gradient overlay */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <Link to={`/services/${service.id}`} key={service.id} className="block h-full">
+              <motion.div
+                variants={scaleIn}
+                whileHover={{
+                  y: -8,
+                  scale: 1.02,
+                  transition: { duration: 0.2 }
+                }}
+                className="group relative bg-card rounded-2xl p-6 border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-300 h-full"
+              >
+                {/* Hover gradient overlay */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-              <div className="relative z-10">
-                {/* Icon */}
-                <motion.div
-                  whileHover={{ rotate: [0, -5, 5, 0], scale: 1.1 }}
-                  transition={{ duration: 0.4 }}
-                  className={`w-14 h-14 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 ${service.color === "primary"
+                <div className="relative z-10 flex flex-col h-full">
+                  {/* Icon */}
+                  <motion.div
+                    whileHover={{ rotate: [0, -5, 5, 0], scale: 1.1 }}
+                    transition={{ duration: 0.4 }}
+                    className={`w-14 h-14 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 ${service.color === "primary"
                       ? "bg-primary/10 group-hover:bg-primary/20 group-hover:shadow-lg group-hover:shadow-primary/20"
                       : "bg-accent/10 group-hover:bg-accent/20 group-hover:shadow-lg group-hover:shadow-accent/20"
-                    }`}
-                >
-                  <service.icon
-                    className={`w-7 h-7 ${service.color === "primary" ? "text-primary" : "text-accent"
                       }`}
-                  />
-                </motion.div>
+                  >
+                    <service.icon
+                      className={`w-7 h-7 ${service.color === "primary" ? "text-primary" : "text-accent"
+                        }`}
+                    />
+                  </motion.div>
 
-                {/* Content */}
-                <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground mb-5 leading-relaxed">
-                  {service.description}
-                </p>
+                  {/* Content */}
+                  <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-5 leading-relaxed flex-grow">
+                    {service.description}
+                  </p>
 
-                {/* CTA */}
-                <span className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:gap-3 transition-all duration-300">
-                  Get Started
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </div>
-            </motion.div>
+                  {/* CTA */}
+                  <span className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:gap-3 transition-all duration-300 mt-auto">
+                    Learn More
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </motion.div>
 
