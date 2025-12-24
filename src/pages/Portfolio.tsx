@@ -31,7 +31,7 @@ const portfolioItems = [
     companyName: "Neoplatron",
     description: "A fully functional website with admin controls and warrenty management system, built for a leading fuel optimizing solutions supplier in Hyderabad.",
     siteUrl: "https://neoplatron.com/",
-    images: ["src/assets/neoplatron_home.png"],
+    images: ["neoplatron_home.png"],
     category: "Web Development",
   },
   {
