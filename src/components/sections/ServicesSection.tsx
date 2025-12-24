@@ -21,18 +21,18 @@ const services = [
     color: "primary",
   },
   {
-    icon: Megaphone,
-    title: "Digital Marketing & Ads",
-    description:
-      "Strategic campaigns across Google, Meta, and more to maximize your reach and ROI.",
-    color: "accent",
-  },
-  {
     icon: Search,
     title: "SEO & Ranking Optimization",
     description:
       "Boost your visibility on search engines and attract organic traffic that converts.",
     color: "primary",
+  },
+  {
+    icon: Megaphone,
+    title: "Digital Marketing & Ads",
+    description:
+      "Strategic campaigns across Google, Meta, and more to maximize your reach and ROI.",
+    color: "accent",
   },
   {
     icon: Video,
@@ -50,9 +50,9 @@ const services = [
   },
   {
     icon: MessageCircle,
-    title: "WhatsApp Business API",
+    title: "WhatsApp Business API & Customer Relationship Management",
     description:
-      "Automate customer communications and run targeted campaigns via WhatsApp.",
+      "Automate customer communications and run targeted campaigns via WhatsApp. Build a strong relationship with your customers using CRM Dashboards.",
     color: "accent",
   },
   {
@@ -126,32 +126,30 @@ export const ServicesSection = () => {
             <motion.div
               key={service.title}
               variants={scaleIn}
-              whileHover={{ 
-                y: -8, 
+              whileHover={{
+                y: -8,
                 scale: 1.02,
-                transition: { duration: 0.2 } 
+                transition: { duration: 0.2 }
               }}
               className="group relative bg-card rounded-2xl p-6 border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-300 cursor-pointer"
               onClick={scrollToContact}
             >
               {/* Hover gradient overlay */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
+
               <div className="relative z-10">
                 {/* Icon */}
                 <motion.div
                   whileHover={{ rotate: [0, -5, 5, 0], scale: 1.1 }}
                   transition={{ duration: 0.4 }}
-                  className={`w-14 h-14 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 ${
-                    service.color === "primary"
+                  className={`w-14 h-14 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 ${service.color === "primary"
                       ? "bg-primary/10 group-hover:bg-primary/20 group-hover:shadow-lg group-hover:shadow-primary/20"
                       : "bg-accent/10 group-hover:bg-accent/20 group-hover:shadow-lg group-hover:shadow-accent/20"
-                  }`}
+                    }`}
                 >
                   <service.icon
-                    className={`w-7 h-7 ${
-                      service.color === "primary" ? "text-primary" : "text-accent"
-                    }`}
+                    className={`w-7 h-7 ${service.color === "primary" ? "text-primary" : "text-accent"
+                      }`}
                   />
                 </motion.div>
 
