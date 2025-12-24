@@ -22,7 +22,7 @@ export const ContactSection = () => {
     const formData = new FormData(form);
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/info@creathy.in", {
+      const response = await fetch("https://formsubmit.co/ajax/creathy23@gmail.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
