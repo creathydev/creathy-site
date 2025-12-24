@@ -122,6 +122,20 @@ const Portfolio = () => {
           name="description"
           content="Explore Creathy's portfolio of successful digital projects including websites, digital marketing campaigns, and video production work."
         />
+
+                <meta name="keywords" content="digital portfolio, website examples, marketing case studies, video production work, Creathy projects" />
+        <link rel="canonical" href="https://creathy.in/portfolio" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Our Work | Creathy - Digital Services Portfolio" />
+        <meta property="og:description" content="Explore Creathy's portfolio of successful digital projects including websites, digital marketing campaigns, and video production work." />
+        <meta property="og:url" content="https://creathy.in/portfolio" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter */}
+        <meta name="twitter:title" content="Our Work | Creathy - Digital Services Portfolio" />
+        <meta name="twitter:description" content="Explore Creathy's portfolio of successful digital projects including websites, digital marketing campaigns, and video production work." />
+        
       </Helmet>
 
       <div className="min-h-screen bg-background">
