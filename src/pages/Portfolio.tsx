@@ -28,9 +28,9 @@ const portfolioItems = [
    },
 {
   id: 2,
-    companyName: "Coming Soon",
-    description: "Web development success story coming soon",
-    siteUrl: "#",
+    companyName: "Neoplatron",
+    description: "A fully functional website with admin controls and warrenty management system, built for a leading fuel optimizing solutions supplier in Hyderabad.",
+    siteUrl: "https://neoplatron.com/",
     images: ["/placeholder.svg"],
     category: "Web Development",
   },
