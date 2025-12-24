@@ -15,6 +15,7 @@ const navLinks = [
   { name: "Services", href: "#services" },
   { name: "Why Us", href: "#why-us" },
   { name: "Portfolio", href: "/portfolio", isPage: true },
+  { name: "Blog", href: "/blog", isPage: true },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -58,7 +59,7 @@ export const Navbar = () => {
   const handleSectionClick = (href: string) => {
     const sectionId = href.slice(1);
     setIsMobileMenuOpen(false);
-    
+
     if (isHomePage) {
       // On home page, just scroll to section
       document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
@@ -85,11 +86,10 @@ export const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-border/50 shadow-sm"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-background/80 backdrop-blur-lg border-b border-border/50 shadow-sm"
+        : "bg-transparent"
+        }`}
     >
       <nav className="container-narrow">
         <div className="flex items-center justify-between h-16 md:h-20">
@@ -100,15 +100,19 @@ export const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <img 
-              src={mounted && resolvedTheme === "dark" ? logoDark : logoLight} 
-              alt="Creathy Logo" 
+            <img
+              src={mounted && resolvedTheme === "dark" ? logoDark : logoLight}
+              alt="Creathy Logo"
+              width={140}
+              height={40}
               style={{ height: `${2.5 * LOGO_SCALE}rem`, width: 'auto' }}
               className="md:hidden"
             />
-            <img 
-              src={mounted && resolvedTheme === "dark" ? logoDark : logoLight} 
-              alt="Creathy Logo" 
+            <img
+              src={mounted && resolvedTheme === "dark" ? logoDark : logoLight}
+              alt="Creathy Logo"
+              width={196}
+              height={56}
               style={{ height: `${3.5 * LOGO_SCALE}rem`, width: 'auto' }}
               className="hidden md:block"
             />
@@ -116,16 +120,15 @@ export const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => 
+            {navLinks.map((link) =>
               link.isPage ? (
                 <motion.div key={link.name} whileHover={{ y: -2 }}>
                   <Link
                     to={link.href}
-                    className={`relative text-sm font-medium transition-colors duration-200 ${
-                      location.pathname === link.href
-                        ? "text-primary"
-                        : "text-muted-foreground hover:text-foreground"
-                    }`}
+                    className={`relative text-sm font-medium transition-colors duration-200 ${location.pathname === link.href
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-foreground"
+                      }`}
                   >
                     {link.name}
                     {location.pathname === link.href && (
@@ -140,11 +143,10 @@ export const Navbar = () => {
                 <motion.button
                   key={link.name}
                   onClick={() => handleSectionClick(link.href)}
-                  className={`relative text-sm font-medium transition-colors duration-200 ${
-                    isHomePage && activeSection === link.href.slice(1)
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
+                  className={`relative text-sm font-medium transition-colors duration-200 ${isHomePage && activeSection === link.href.slice(1)
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
+                    }`}
                   whileHover={{ y: -2 }}
                 >
                   {link.name}
@@ -223,7 +225,7 @@ export const Navbar = () => {
                 transition={{ delay: 0.1 }}
                 className="py-4 space-y-1"
               >
-                {navLinks.map((link, i) => 
+                {navLinks.map((link, i) =>
                   link.isPage ? (
                     <motion.div
                       key={link.name}
@@ -234,11 +236,10 @@ export const Navbar = () => {
                       <Link
                         to={link.href}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className={`block px-4 py-3 rounded-lg transition-colors ${
-                          location.pathname === link.href
-                            ? "text-primary bg-primary/10"
-                            : "text-foreground hover:text-primary hover:bg-primary/5"
-                        }`}
+                        className={`block px-4 py-3 rounded-lg transition-colors ${location.pathname === link.href
+                          ? "text-primary bg-primary/10"
+                          : "text-foreground hover:text-primary hover:bg-primary/5"
+                          }`}
                       >
                         {link.name}
                       </Link>
@@ -250,11 +251,10 @@ export const Navbar = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 + i * 0.05 }}
-                      className={`block w-full text-left px-4 py-3 rounded-lg transition-colors ${
-                        isHomePage && activeSection === link.href.slice(1)
-                          ? "text-primary bg-primary/10"
-                          : "text-foreground hover:text-primary hover:bg-primary/5"
-                      }`}
+                      className={`block w-full text-left px-4 py-3 rounded-lg transition-colors ${isHomePage && activeSection === link.href.slice(1)
+                        ? "text-primary bg-primary/10"
+                        : "text-foreground hover:text-primary hover:bg-primary/5"
+                        }`}
                     >
                       {link.name}
                     </motion.button>
