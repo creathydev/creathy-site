@@ -20,7 +20,7 @@ export const HeroSection = () => {
   const instagramLink = "https://www.instagram.com/creathy.in?igsh=ZXk3YzBuMjI1dDRz";
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero-bg">
       {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 overflow-hidden hidden md:block">
         {/* Gradient orbs */}
         <motion.div animate={{
         scale: [1, 1.2, 1],
