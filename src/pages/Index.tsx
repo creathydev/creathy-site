@@ -6,6 +6,8 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { WhyUsSection } from "@/components/sections/WhyUsSection";
+import { ProcessSection } from "@/components/sections/ProcessSection";
+import { FAQSection } from "@/components/sections/FAQSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { Footer } from "@/components/layout/Footer";
 import { ParticleBackground } from "@/components/ui/ParticleBackground";
@@ -26,18 +28,18 @@ const Index = () => {
         <meta name="description" content="Creathy is a digital agency specializing in website development, digital marketing, influencer marketing, video editing, SEO optimization, and branding solutions for growing businesses." />
         <meta name="keywords" content="website development, digital marketing, influencer marketing, video editing, SEO optimization, branding, web design, social media marketing, Creathy" />
         <link rel="canonical" href="https://creathy.in" />
-        
+
         {/* Open Graph */}
         <meta property="og:title" content="Creathy - Website Development, Digital Marketing & Video Editing Services" />
         <meta property="og:description" content="Your trusted partner for digital transformation. We help businesses grow with modern digital solutions." />
         <meta property="og:url" content="https://creathy.in" />
         <meta property="og:type" content="website" />
-        
+
         {/* Twitter */}
         <meta name="twitter:title" content="Creathy - Website Development, Digital Marketing & Video Editing Services" />
         <meta name="twitter:description" content="Your trusted partner for digital transformation. We help businesses grow with modern digital solutions." />
       </Helmet>
-      
+
       <div className="min-h-screen bg-background text-foreground relative">
         <ParticleBackground />
         <Navbar />
@@ -45,7 +47,9 @@ const Index = () => {
           <HeroSection />
           <AboutSection />
           <ServicesSection />
+          <ProcessSection />
           <WhyUsSection />
+          <FAQSection />
           <ContactSection />
         </main>
         <Footer />
