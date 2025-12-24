@@ -15,6 +15,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import razzaqHeroImage from "@/assets/razzaq-automotives-hero.png";
+import neoplatronimage from "@/assets/neoplatronhome.png"
 
 // Sample portfolio data - can be updated later
 const portfolioItems = [
@@ -31,7 +32,7 @@ const portfolioItems = [
     companyName: "Neoplatron",
     description: "A fully functional website with admin controls and warrenty management system, built for a leading fuel optimizing solutions supplier in Hyderabad.",
     siteUrl: "https://neoplatron.com/",
-    images: ["neoplatron_home.png"],
+    images: [neoplatronimage],
     category: "Web Development",
   },
   {
