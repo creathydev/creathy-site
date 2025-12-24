@@ -22,6 +22,11 @@ export const ParticleBackground = () => {
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+    
+    // Performance: Disable particles on mobile
+    if (window.innerWidth < 768) {
+      return;
+    }
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
