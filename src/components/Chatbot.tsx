@@ -14,6 +14,41 @@ interface Message {
     isTyping?: boolean;
 }
 
+
+const renderContent = (content: string) => {
+    const parts = content.split(/(\*\*.*?\*\*|- .*)/g);
+    return parts.map((part, index) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+            return <strong key={index}>{part.slice(2, -2)}</strong>;
+        }
+        return <span key={index}>{part}</span>;
+    });
+};
+
+const Typewriter = ({ text, speed = 30, onComplete }: { text: string; speed?: number; onComplete?: () => void }) => {
+    const [displayedText, setDisplayedText] = useState("");
+    const indexRef = useRef(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setDisplayedText((prev) => {
+                const nextChar = text.charAt(indexRef.current);
+                indexRef.current++;
+                return prev + nextChar;
+            });
+
+            if (indexRef.current >= text.length) {
+                clearInterval(timer);
+                if (onComplete) onComplete();
+            }
+        }, speed);
+
+        return () => clearInterval(timer);
+    }, [text, speed, onComplete]);
+
+    return <>{renderContent(displayedText)}</>;
+};
+
 export function Chatbot() {
     // State for Lead Generation
     const [leadData, setLeadData] = useState<{ name: string; email: string; phone: string } | null>(null);
@@ -101,7 +136,7 @@ export function Chatbot() {
         };
     }, [leadData, messages]);
 
-    const handleLeadSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleLeadSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const name = formData.get("name") as string;
