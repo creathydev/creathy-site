@@ -240,12 +240,12 @@ export function Chatbot() {
                         initial={{ opacity: 0, y: 20, scale: 0.9 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.9 }}
-                        className="mb-4 mr-2 bg-white text-foreground p-4 rounded-2xl shadow-xl max-w-[250px] relative pointer-events-auto"
+                        className="mb-4 mr-2 bg-white dark:bg-card text-foreground p-4 rounded-2xl shadow-xl border border-border/50 max-w-[250px] relative pointer-events-auto"
                     >
                         <p className="text-sm font-medium">
                             🤖 <strong>Creo here!</strong> I'm ready to help.
                         </p>
-                        <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white rotate-45" />
+                        <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white dark:bg-card border-b border-r border-border/50 rotate-45" />
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -335,8 +335,8 @@ export function Chatbot() {
                                         >
                                             <div
                                                 className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm shadow-sm ${message.role === "user"
-                                                        ? "bg-primary text-primary-foreground rounded-tr-none"
-                                                        : "bg-muted text-foreground rounded-tl-none"
+                                                    ? "bg-primary text-primary-foreground rounded-tr-none"
+                                                    : "bg-muted text-foreground rounded-tl-none"
                                                     }`}
                                             >
                                                 {message.role === "assistant" && message.isTyping ? (
