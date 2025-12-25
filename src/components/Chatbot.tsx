@@ -99,7 +99,9 @@ export function Chatbot() {
             if (!response.ok) {
                 const errorData = await response.json().catch(() => ({}));
                 console.error("API Error Details:", errorData);
-                const errorMessage = errorData.error || `Status ${response.status}`;
+                const errorMessage = errorData.details
+                    ? `${errorData.error}: ${errorData.details}`
+                    : (errorData.error || `Status ${response.status}`);
                 throw new Error(errorMessage);
             }
 
