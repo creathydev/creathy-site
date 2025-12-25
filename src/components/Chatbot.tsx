@@ -136,7 +136,7 @@ export function Chatbot() {
         };
     }, [leadData, messages]);
 
-    const handleLeadSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
+    const handleLeadSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const name = formData.get("name") as string;
@@ -191,6 +191,8 @@ export function Chatbot() {
                 throw new Error(errorMessage);
             }
 
+
+
             const data = await response.json();
             let rawContent = data.choices[0].message.content;
             let showContactOptions = false;
@@ -216,10 +218,24 @@ export function Chatbot() {
 
         } catch (error) {
             console.error("Chat Error:", error);
-            setMessages((prev) => [
-                ...prev,
-                { role: "assistant", content: `Sorry, I encountered an issue: ${error instanceof Error ? error.message : "Unknown error"}.`, isTyping: false }
-            ]);
+            const errorMessage = error instanceof Error ? error.message : "Unknown error";
+
+            // Check for rate limit error
+            if (errorMessage.toLowerCase().includes("rate limit") || errorMessage.includes("429")) {
+                setMessages((prev) => [
+                    ...prev,
+                    {
+                        role: "assistant",
+                        content: `I've reached my message limit for this session. Please refresh the page or click "End Chat" to start a new conversation!`,
+                        isTyping: false
+                    }
+                ]);
+            } else {
+                setMessages((prev) => [
+                    ...prev,
+                    { role: "assistant", content: `Sorry, I encountered an issue: ${errorMessage}.`, isTyping: false }
+                ]);
+            }
         } finally {
             setIsLoading(false);
         }
