@@ -10,8 +10,7 @@ export default async function handler(request, response) {
         return response.status(500).json({ error: 'Missing API Key in Server Environment' });
     }
 
-    // Knowledge Base (Mirrored from src/data/websiteContent.ts)
-    // In a real app, this would be imported, but for Vercel functions without build steps, inlining is safer.
+    // Knowledge Base (Fully restored to match src/data/websiteContent.ts)
     const websiteContent = {
         about: {
             mission: "Creathy is a passionate digital agency helping businesses step into the digital world with ease. Our mission is to empower growth using creative, technology-driven solutions that transform how you connect with your audience.",
@@ -37,12 +36,43 @@ export default async function handler(request, response) {
             "Quick Deliverables: Fast turnaround times without compromising on quality.",
             "Transparent Communication: Regular updates and clear communication throughout every project phase."
         ],
-        // Adding simplified services list for context
         services: [
-            { title: "Web Development", description: "Custom websites, E-commerce, Web Apps" },
-            { title: "Digital Marketing", description: "SEO, PPC, Social Media Marketing" },
-            { title: "Branding", description: "Logo Design, Brand Identity, Rebranding" },
-            { title: "Video Production", description: "Corporate Videos, Reels, Promotional Content" }
+            {
+                title: "Website Development",
+                description: "We build high-performance, responsive, and visually stunning websites tailored to your brand.",
+                longDescription: "Our coding experts create custom websites that are not only beautiful but also fast, secure, and SEO-friendly. Whether you need a simple landing page or a complex e-commerce platform, we have the skills to bring your vision to life.",
+                features: ["Custom Design & Development", "Responsive & Mobile-Friendly", "E-commerce Solutions", "CMS Integration (WordPress, Shopify, etc.)", "Maintenance & Support"]
+            },
+            {
+                title: "Digital Marketing",
+                description: "Accelerate your growth with data-driven marketing strategies that reach the right audience.",
+                longDescription: "We use a mix of SEO, PPC, and social media marketing to increase your brand visibility and drive traffic. our goal is to convert visitors into loyal customers through targeted campaigns.",
+                features: ["Search Engine Optimization (SEO)", "Pay-Per-Click (PPC) Advertising", "Content Marketing", "Email Marketing", "Analytics & Reporting"]
+            },
+            {
+                title: "Influencer Marketing",
+                description: "Connect with your audience authentically through trusted voices in your industry.",
+                longDescription: "We help you identify and collaborate with influencers who align with your brand values. From micro-influencers to major personalities, we manage the entire campaign to ensure maximum impact.",
+                features: ["Influencer Identification", "Campaign Strategy & Management", "Content Creation", "Performance Tracking"]
+            },
+            {
+                title: "Video Editing",
+                description: "Transform raw footage into captivating stories that engage and inspire.",
+                longDescription: "Our video editing team enhances your content with professional cuts, transitions, effects, and sound design. Perfect for social media, corporate videos, and promotional materials.",
+                features: ["Corporate Video Editing", "Social Media Reels & Shorts", "YouTube Video Production", "Color Correction & Grading", "Sound Design & Mixing"]
+            },
+            {
+                title: "Branding",
+                description: "Build a strong, memorable brand identity that resonates with your customers.",
+                longDescription: "From logo design to complete brand guidelines, we help you define who you are and how you communicate. A strong brand is the foundation of a successful business.",
+                features: ["Logo Design", "Brand Strategy", "Visual Identity Systems", "Brand Guidelines", "Rebranding Services"]
+            },
+            {
+                title: "SEO Optimization",
+                description: "Improve your search engine rankings and get found by more customers online.",
+                longDescription: "We implement on-page and off-page SEO strategies to boost your organic traffic. Our data-driven approach ensures long-term results and higher visibility.",
+                features: ["Keyword Research", "On-Page Optimization", "Technical SEO", "Link Building", "Local SEO"]
+            }
         ],
         portfolio: [
             {
@@ -86,8 +116,13 @@ ${websiteContent.process.map(p => `- ${p.title}: ${p.description}`).join('\n')}
 WHY CHOOSE US:
 ${websiteContent.whyUs.map(w => `- ${w}`).join('\n')}
 
-SERVICES:
-${websiteContent.services.map(s => `- ${s.title}: ${s.description}`).join('\n')}
+SERVICES (Detailed Capabilities):
+${websiteContent.services.map(s => `
+SERVICE: ${s.title}
+DESCRIPTION: ${s.description}
+DETAILS: ${s.longDescription}
+FEATURES: ${s.features.join(', ')}
+`).join('\n')}
 
 PORTFOLIO (Past Projects):
 ${websiteContent.portfolio.map(p => `- ${p.client}: ${p.description} (${p.category})`).join('\n')}
