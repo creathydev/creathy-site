@@ -86,10 +86,13 @@ export function Chatbot() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    messages: messages.slice(1).map(msg => ({
-                        role: msg.role,
-                        content: msg.content // Don't send showContactOptions logic or system prompt
-                    })),
+                    messages: [
+                        ...messages.slice(1).map(msg => ({
+                            role: msg.role,
+                            content: msg.content // Don't send showContactOptions logic or system prompt
+                        })),
+                        { role: userMessage.role, content: userMessage.content }
+                    ],
                 }),
             });
 
