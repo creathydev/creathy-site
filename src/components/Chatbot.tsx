@@ -231,40 +231,7 @@ export function Chatbot() {
         ));
     };
 
-    // Typewriter effect component
-    const Typewriter = ({ text, speed = 30, onComplete }: { text: string; speed?: number; onComplete?: () => void }) => {
-        const [displayedText, setDisplayedText] = useState("");
-        const indexRef = useRef(0);
 
-        useEffect(() => {
-            const timer = setInterval(() => {
-                setDisplayedText((prev) => {
-                    const nextChar = text.charAt(indexRef.current);
-                    indexRef.current++;
-                    return prev + nextChar;
-                });
-
-                if (indexRef.current >= text.length) {
-                    clearInterval(timer);
-                    if (onComplete) onComplete();
-                }
-            }, speed);
-
-            return () => clearInterval(timer);
-        }, [text, speed, onComplete]);
-
-        return <>{renderContent(displayedText)}</>;
-    };
-
-    const renderContent = (content: string) => {
-        const parts = content.split(/(\*\*.*?\*\*|- .*)/g);
-        return parts.map((part, index) => {
-            if (part.startsWith('**') && part.endsWith('**')) {
-                return <strong key={index}>{part.slice(2, -2)}</strong>;
-            }
-            return <span key={index}>{part}</span>;
-        });
-    };
 
     return (
         <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end pointer-events-none">
