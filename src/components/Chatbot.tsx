@@ -311,15 +311,15 @@ export function Chatbot() {
                                 <form onSubmit={handleLeadSubmit} className="space-y-4">
                                     <div className="space-y-2">
                                         <label className="text-xs font-semibold uppercase text-muted-foreground">Name</label>
-                                        <input name="name" required className="w-full px-4 py-2 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary/20 outline-none" placeholder="John Doe" />
+                                        <input name="name" required className="w-full px-4 py-2 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary/20 outline-none" placeholder="Name" />
                                     </div>
                                     <div className="space-y-2">
                                         <label className="text-xs font-semibold uppercase text-muted-foreground">Email</label>
-                                        <input name="email" type="email" required className="w-full px-4 py-2 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary/20 outline-none" placeholder="john@example.com" />
+                                        <input name="email" type="email" required className="w-full px-4 py-2 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary/20 outline-none" placeholder="Email" />
                                     </div>
                                     <div className="space-y-2">
                                         <label className="text-xs font-semibold uppercase text-muted-foreground">Phone (Optional)</label>
-                                        <input name="phone" type="tel" className="w-full px-4 py-2 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary/20 outline-none" placeholder="+91 98765 43210" />
+                                        <input name="phone" type="tel" className="w-full px-4 py-2 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary/20 outline-none" placeholder="Phone" />
                                     </div>
                                     <Button type="submit" className="w-full">Start Chat</Button>
                                 </form>
