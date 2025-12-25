@@ -109,6 +109,11 @@ export function Chatbot() {
                 rawContent = rawContent.replace("[[SHOW_CONTACT_OPTIONS]]", "").trim();
             }
 
+            // Fallback if the AI only sent the tag
+            if (!rawContent && showContactOptions) {
+                rawContent = "Please select an option below:";
+            }
+
             const assistantMessage: Message = {
                 role: "assistant",
                 content: rawContent,
